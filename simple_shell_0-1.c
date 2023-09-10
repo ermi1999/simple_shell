@@ -1,43 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-/**
- * fork_provider - Creates a child process and executes a command using execve
- * @input: The command to be executed
- */
-void fork_provider(char *input)
-{
-	pid_t child_pid = fork();
-
-	if (child_pid == -1)
-	{
-		perror("fork error");
-		exit(1);
-	}
-	else if (child_pid == 0)
-	{
-		char *args[2];
-
-		args[0] = input;
-		args[1] = NULL;
-
-		if (execve(input, args, NULL) == -1)
-		{
-			perror("./shell");
-			exit(1);
-		}
-	}
-	else
-	{
-		/* Parent process */
-		int status;
-
-		wait(&status);
-	}
-}
+#include "main.h"
 
 /**
  * main - Entry point

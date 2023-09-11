@@ -6,7 +6,7 @@
  * Return: Always 0 (Success)
  */
 
-int main()
+int main(void)
 {
 	printf("#cisfun$ ");
 	prompt_provider();

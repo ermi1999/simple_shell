@@ -6,7 +6,7 @@
  * @input: The command to be executed
  */
 
-void fork_provider(char *input)
+void fork_provider(char *arg[])
 {
 	pid_t child_pid = fork();
 
@@ -17,12 +17,7 @@ void fork_provider(char *input)
 	}
 	else if (child_pid == 0)
 	{
-		char *args[2];
-
-		args[0] = input;
-		args[1] = NULL;
-
-		if (execve(input, args, NULL) == -1)
+		if (execve(arg[0], arg, NULL) == -1)
 		{
 			perror("./shell");
 			exit(1);

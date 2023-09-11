@@ -9,5 +9,6 @@
 #include "main.h"
 
 void fork_provider(char *input);
+void prompt_provider();
 
 #endif

@@ -9,13 +9,12 @@
 int main(int argc, char **argv)
 {
 
-    if (argc < 0)
-    {
-        perror("Insufficient arguments");
-    }
+	if (argc < 0)
+	{
+		perror("Insufficient arguments");
+	}
 
-    prompt_provider(argv[0]);
+	prompt_provider(argv[0]);
 
-    return (0);
+	return (0);
 }
-

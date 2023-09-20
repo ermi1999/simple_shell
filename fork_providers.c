@@ -1,5 +1,5 @@
 #include "main.h"
-​
+
 /**
  * execution - Executes a command using execve
  *
@@ -11,15 +11,15 @@
 void execution(char *arg[], char *env[], char *path_env, char *program_name)
 {
 	char *directory = strtok(path_env, ":");
-​
+
 	while (directory != NULL)
 	{
 		char *path = malloc(string_length(directory) + string_length(arg[0]) + 2);
-​
+
 		string_copy(path, directory);
 		string_concat(path, "/");
 		string_concat(path, arg[0]);
-​
+
 		if (access(path, X_OK) == 0)
 		{
 			if (execve(path, arg, env) == -1)
@@ -32,14 +32,14 @@ void execution(char *arg[], char *env[], char *path_env, char *program_name)
 				return;
 			}
 		}
-​
+
 		free(path);
 		directory = strtok(NULL, ":");
 	}
-​
+
 	command_not_found_error_handler(program_name, arg[0]);
 }
-​
+
 /**
  * fork_provider - Creates a child process and executes a command using execve
  *
@@ -50,7 +50,7 @@ void execution(char *arg[], char *env[], char *path_env, char *program_name)
 void fork_provider(char *arg[], char *envp[], char *program_name)
 {
 	pid_t child_pid = fork();
-​
+
 	if (child_pid == -1)
 	{
 		perror("fork error");
@@ -60,7 +60,7 @@ void fork_provider(char *arg[], char *envp[], char *program_name)
 	{
 		char *path_env = NULL;
 		int i;
-​
+
 		for (i = 0; envp[i] != NULL; i++)
 		{
 			if (string_compare(envp[i], "PATH=", 5) == 0)
@@ -69,22 +69,22 @@ void fork_provider(char *arg[], char *envp[], char *program_name)
 				break;
 			}
 		}
-​
+
 		if (path_env == NULL)
 		{
 			command_not_found_error_handler(program_name, arg[0]);
 		}
-​
+
 		execution(arg, envp, path_env, program_name);
 	}
 	else
 	{
 		int status;
-​
+
 		wait(&status);
 	}
 }
-​
+
 /**
  * path_specified_fork_provider - Creates a child process and
  * executes a command using execve without searching the PATH
@@ -95,7 +95,7 @@ void fork_provider(char *arg[], char *envp[], char *program_name)
 void path_specified_fork_provider(char *arg[], char *program_name)
 {
 	pid_t child_pid = fork();
-​
+
 	if (child_pid == -1)
 	{
 		perror("fork error");
@@ -111,7 +111,7 @@ void path_specified_fork_provider(char *arg[], char *program_name)
 	else
 	{
 		int status;
-​
+
 		wait(&status);
 	}
 }

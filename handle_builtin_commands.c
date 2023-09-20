@@ -6,14 +6,14 @@
 void env_variables(char **env)
 {
 	int i = 0;
-​
+
 	while (env[i] != NULL)
 	{
 		printf("%s\n", env[i]);
 		i++;
 	}
 }
-​
+
 /**
  * builtin_commands - Handles built-in commands
  * @arg: The array of command arguments
@@ -28,7 +28,7 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 		if (arg[1] != NULL)
 		{
 			int is_valid = string_to_int(arg[1]);
-​
+
 			if (is_valid == -1)
 			{
 				exit_error_handler(program, arg[1]);
@@ -36,7 +36,7 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 			else
 			{
 				int status = is_valid;
-​
+
 				exit(status);
 			}
 		}
@@ -51,6 +51,6 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 		*handled = 1;
 		return;
 	}
-​
+
 	*handled = 0;
 }

@@ -1,13 +1,5 @@
 #include "main.h"
 
-/**
- * execution - Executes a command using execve
- *
- * @arg: The command and its arguments
- * @env: The environment variables
- * @path_env: The PATH environment variable
- * @program_name: Pointer to the program_name
- */
 void execution(char *arg[], char *env[], char *path_env, char *program_name)
 {
 	char *directory = strtok(path_env, ":");

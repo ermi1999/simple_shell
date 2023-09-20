@@ -6,7 +6,7 @@
  * @arg: The command and its arguments
  * @env: The environment variables
  * @path_env: The PATH environment variable
- * @line_number: Pointer to the current line number
+ * @program_name: Pointer to the program name
  */
 void execution(char *arg[], char *env[], char *path_env, char *program_name)
 {

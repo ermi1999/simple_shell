@@ -20,17 +20,17 @@ void env_variables(char **env)
  */
 void set_env_variable(char **arg)
 {
-    if (arg[1] == NULL || arg[2] == NULL)
-    {
-        perror("unsetenv: Invalid syntax");
-    }
-    else
-    {
-        if (setenv(arg[1], arg[2], 1) != 0)
-        {
-            perror("Syntax: setenv MYVAR myvalue");
-        }
-    }
+	if (arg[1] == NULL || arg[2] == NULL)
+	{
+		perror("unsetenv: Invalid syntax");
+	}
+	else
+	{
+		if (setenv(arg[1], arg[2], 1) != 0)
+		{
+			perror("Syntax: setenv MYVAR myvalue");
+		}
+	}
 }
 
 /**
@@ -39,17 +39,46 @@ void set_env_variable(char **arg)
  */
 void unset_env_variable(char **arg)
 {
-    if (arg[1] == NULL)
-    {
-	perror("unsetenv: Invalid syntax");
-    }
-    else
-    {
-        if (unsetenv(arg[1]) != 0)
-        {
-            perror("Syntax: unsetenv MYVAR");
-        }
-    }
+	if (arg[1] == NULL)
+	{
+		perror("unsetenv: Invalid syntax");
+	}
+	else
+	{
+		if (unsetenv(arg[1]) != 0)
+		{
+			perror("Syntax: unsetenv MYVAR");
+		}
+	}
+}
+
+/**
+ * exit_command_handler - handles exit command
+ * @arg: The array of command arguments
+ * @program: Pointer to the program name
+*/
+
+void exit_command_handler(char **arg, char *program)
+{
+	if (arg[1] != NULL)
+	{
+		int is_valid = string_to_int(arg[1]);
+
+		if (is_valid == -1)
+		{
+			exit_error_handler(program, arg[1]);
+		}
+		else
+		{
+			int status = is_valid;
+
+			exit(status);
+		}
+	}
+	else
+	{
+		exit(0);
+	}
 }
 
 /**
@@ -63,25 +92,7 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 {
 	if (string_compare(arg[0], "exit", string_length("exit")) == 0)
 	{
-		if (arg[1] != NULL)
-		{
-			int is_valid = string_to_int(arg[1]);
-
-			if (is_valid == -1)
-			{
-				exit_error_handler(program, arg[1]);
-			}
-			else
-			{
-				int status = is_valid;
-
-				exit(status);
-			}
-		}
-		else
-		{
-			exit(0);
-		}
+		exit_command_handler(arg, program);
 	}
 	else if (string_compare(arg[0], "env", string_length("env")) == 0)
 	{
@@ -101,6 +112,5 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 		*handled = 1;
 		return;
 	}
-
 	*handled = 0;
 }

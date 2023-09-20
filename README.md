@@ -9,3 +9,5 @@ set_env_variable:
 	 Sets an environment variable
 *  fork_provider:
 	Creates a child process and executes a command using execve
+*  path_specified_fork_provider:
+	Creates a child process and executes a command using execve without searching the PATH

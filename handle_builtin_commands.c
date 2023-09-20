@@ -15,6 +15,44 @@ void env_variables(char **env)
 }
 
 /**
+ * set_env_variable - Sets an environment variable
+ * @arg: The array of command arguments
+ */
+void set_env_variable(char **arg)
+{
+    if (arg[1] == NULL || arg[2] == NULL)
+    {
+        perror("unsetenv: Invalid syntax");
+    }
+    else
+    {
+        if (setenv(arg[1], arg[2], 1) != 0)
+        {
+            perror("Syntax: setenv MYVAR myvalue");
+        }
+    }
+}
+
+/**
+ * unset_env_variable - Unsets an environment variable
+ * @arg: The array of command arguments
+ */
+void unset_env_variable(char **arg)
+{
+    if (arg[1] == NULL)
+    {
+	perror("unsetenv: Invalid syntax");
+    }
+    else
+    {
+        if (unsetenv(arg[1]) != 0)
+        {
+            perror("Syntax: unsetenv MYVAR");
+        }
+    }
+}
+
+/**
  * builtin_commands - Handles built-in commands
  * @arg: The array of command arguments
  * @env: The array of environment variables
@@ -48,6 +86,18 @@ void builtin_commands(char **arg, char **env, int *handled, char *program)
 	else if (string_compare(arg[0], "env", string_length("env")) == 0)
 	{
 		env_variables(env);
+		*handled = 1;
+		return;
+	}
+	else if (string_compare(arg[0], "setenv", string_length("setenv")) == 0)
+	{
+		set_env_variable(arg);
+		*handled = 1;
+		return;
+	}
+	else if (string_compare(arg[0], "unsetenv", string_length("unsetenv")) == 0)
+	{
+		unset_env_variable(arg);
 		*handled = 1;
 		return;
 	}

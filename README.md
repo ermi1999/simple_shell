@@ -13,3 +13,5 @@ set_env_variable:
 	Creates a child process and executes a command using execve without searching the PATH
 *  string_compare:
 	Compare two strings up to a specified number of characters
+* string_copy:
+	Copy a string from source to destination

@@ -19,3 +19,5 @@ set_env_variable:
 	Calculate the length of a string
 *  string_concat:
 	Concatenate two strings
+*  is_valid_integer:
+	Checks if a string represents a valid integer

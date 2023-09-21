@@ -58,7 +58,7 @@ void unset_env_variable(char **arg)
  * @program: Pointer to the program name
 */
 
-void exit_command_handler(char **arg, char *program)
+void exit_command_handler(char **arg, char *program, char *input)
 {
 	if (arg[1] != NULL)
 	{
@@ -73,28 +73,30 @@ void exit_command_handler(char **arg, char *program)
 			int status = is_valid;
 
 			free(arg);
+			free(input);
 			exit(status);
 		}
 	}
 	else
 	{
 		free(arg);
+		free(input);
 		exit(0);
 	}
 }
 
 /**
- * builtin_commands - Handles built-in commands
+ * builtin - Handles built-in commands
  * @arg: The array of command arguments
  * @env: The array of environment variables
  * @handled: Flag if the argument is handled
  * @program: Pointer to the program name
  */
-void builtin_commands(char **arg, char **env, int *handled, char *program)
+void builtin(char **arg, char **env, int *handled, char *program, char *input)
 {
 	if (string_compare(arg[0], "exit", string_length("exit")) == 0)
 	{
-		exit_command_handler(arg, program);
+		exit_command_handler(arg, program, input);
 	}
 	else if (string_compare(arg[0], "env", string_length("env")) == 0)
 	{

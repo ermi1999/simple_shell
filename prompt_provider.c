@@ -25,7 +25,7 @@ void tokenize_string_provider(char *input, char **env, char *program_name)
 	{
 		int handled;
 
-		builtin_commands(arg, env, &handled, program_name);
+		builtin(arg, env, &handled, program_name, input);
 		if (handled)
 		{
 			free(arg);

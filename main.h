@@ -18,7 +18,7 @@ void path_specified_fork_provider(char *arg[], char *program_name);
 void prompt_provider(char *program_name);
 void command_not_found_error_handler(char *program_name, char *arg);
 void exit_error_handler(char *program_name, char *arg);
-void builtin_commands(char **arg, char **env, int *handled, char *program);
+void builtin(char **arg, char **env, int *handled, char *program, char *input);
 
 /*string manipulation*/
 int string_compare(const char *string_one, const char *string_two, size_t n);

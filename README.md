@@ -15,3 +15,5 @@ set_env_variable:
 	Compare two strings up to a specified number of characters
 * string_copy:
 	Copy a string from source to destination
+*  string_length:
+	Calculate the length of a string

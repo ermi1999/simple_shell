@@ -11,3 +11,5 @@ set_env_variable:
 	Creates a child process and executes a command using execve
 *  path_specified_fork_provider:
 	Creates a child process and executes a command using execve without searching the PATH
+*  string_compare:
+	Compare two strings up to a specified number of characters

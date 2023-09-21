@@ -17,3 +17,5 @@ set_env_variable:
 	Copy a string from source to destination
 *  string_length:
 	Calculate the length of a string
+*  string_concat:
+	Concatenate two strings

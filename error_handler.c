@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * command_not_found_error_handler -
- * Handles the error when a command is not found
+ * command_not_found_error_handler - Handles the error when
+ * a command is not found
  *
  * @program_name: The name of the program
  * @arg: The argument that was not found

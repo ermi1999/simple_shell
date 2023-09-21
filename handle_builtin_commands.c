@@ -72,11 +72,13 @@ void exit_command_handler(char **arg, char *program)
 		{
 			int status = is_valid;
 
+			free(arg);
 			exit(status);
 		}
 	}
 	else
 	{
+		free(arg);
 		exit(0);
 	}
 }

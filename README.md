@@ -23,3 +23,5 @@ set_env_variable:
 	Checks if a string represents a valid integer
 *  get_env_variables:
 	Retrieves the value of an environment variable
+*  env_variables:
+	Prints environment variables

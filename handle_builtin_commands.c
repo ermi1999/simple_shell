@@ -92,6 +92,7 @@ void exit_command_handler(char **arg, char *program, char *input)
  * @env: The array of environment variables
  * @handled: Flag if the argument is handled
  * @program: Pointer to the program name
+ * @input: pointer to the getline input
  */
 void builtin(char **arg, char **env, int *handled, char *program, char *input)
 {

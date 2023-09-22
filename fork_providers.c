@@ -47,7 +47,7 @@ void execution(char *arg[], char *env[], char *path_env, char *program_name)
  * @envp: The environment variables
  * @program_name: Pointer to the program name
  */
-void fork_provider(char *arg[], char *envp[], char *program_name)
+void fork_provider(char *arg[], char *env[], char *program_name)
 {
 	pid_t child_pid = fork();
 
@@ -59,23 +59,15 @@ void fork_provider(char *arg[], char *envp[], char *program_name)
 	else if (child_pid == 0)
 	{
 		char *path_env = NULL;
-		int i;
 
-		for (i = 0; envp[i] != NULL; i++)
-		{
-			if (string_compare(envp[i], "PATH=", 5) == 0)
-			{
-				path_env = envp[i] + 5;
-				break;
-			}
-		}
+		path_env = get_env_variables(env, "PATH=");
 
 		if (path_env == NULL)
 		{
 			command_not_found_error_handler(program_name, arg[0]);
 		}
 
-		execution(arg, envp, path_env, program_name);
+		execution(arg, env, path_env, program_name);
 	}
 	else
 	{

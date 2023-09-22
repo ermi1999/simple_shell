@@ -116,5 +116,11 @@ void builtin(char **arg, char **env, int *handled, char *program, char *input)
 		*handled = 1;
 		return;
 	}
+	else if (string_compare(arg[0], "cd", string_length("cd")) == 0)
+	{
+		cd_command_handler(arg, program, env);
+		*handled = 1;
+		return;
+	}
 	*handled = 0;
 }

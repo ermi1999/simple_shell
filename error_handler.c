@@ -41,3 +41,21 @@ void exit_error_handler(char *program_name, char *arg)
 
 	exit(2);
 }
+
+/**
+ * cd_error_handler - Handles the error when a directory cannot be changed
+ * @program_name: The name of the program
+ * @arg: The argument that was not found
+ */
+void cd_error_handler(char *program_name, char *arg)
+{
+	char error_message[256];
+
+	string_copy(error_message, program_name);
+	string_concat(error_message, ": 1: cd: can't cd to ");
+	string_concat(error_message, arg);
+	string_concat(error_message, "\n");
+	write(STDERR_FILENO, error_message, string_length(error_message));
+
+	exit(0);
+}

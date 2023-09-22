@@ -25,3 +25,5 @@ set_env_variable:
 	Retrieves the value of an environment variable
 *  env_variables:
 	Prints environment variables
+*  change_directory:
+	Changes the current working directory

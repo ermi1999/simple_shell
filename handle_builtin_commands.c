@@ -56,6 +56,7 @@ void unset_env_variable(char **arg)
  * exit_command_handler - handles exit command
  * @arg: The array of command arguments
  * @program: Pointer to the program name
+ * @input: pointer to the getline input
 */
 
 void exit_command_handler(char **arg, char *program, char *input)

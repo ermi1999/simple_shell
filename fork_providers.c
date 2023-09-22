@@ -44,7 +44,7 @@ void execution(char *arg[], char *env[], char *path_env, char *program_name)
  * fork_provider - Creates a child process and executes a command using execve
  *
  * @arg: The command and its arguments
- * @envp: The environment variables
+ * @env: The environment variables
  * @program_name: Pointer to the program name
  */
 void fork_provider(char *arg[], char *env[], char *program_name)

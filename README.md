@@ -21,3 +21,5 @@ set_env_variable:
 	Concatenate two strings
 *  is_valid_integer:
 	Checks if a string represents a valid integer
+*  get_env_variables:
+	Retrieves the value of an environment variable

@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * get_env_variables - Retrieves the value of an environment variable
+ * *get_env_variables - Retrieves the value of an environment variable
  * @env: The array of environment variables
  * @str: The environment variable to retrieve
  *
